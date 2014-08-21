@@ -1,0 +1,8 @@
+node_modules
+lib/
+*.tmp
+*.log
+*.bak
+*.bat
+*.sublime-*
+.idea

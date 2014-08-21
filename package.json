@@ -1,0 +1,46 @@
+{
+  "name": "slush-coffeescript",
+  "version": "0.0.1",
+  "description": "Generates a Node.js module written in Coffeescript",
+  "author": "James Skinner <spiralx@gmail.com> (https://github.com/spiralx)",
+  "homepage": "https://github.com/spiralx/slush-coffeescript",
+  "keywords": [
+    "slushgenerator",
+    "slush",
+    "coffeescript",
+    "coffee-script",
+    "module",
+    "generator",
+    "module"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spiralx/slush-coffeescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/spiralx/slush-coffeescript/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/spiralx/slush-coffeescript/blob/master/LICENSE"
+  },
+  "main": "slushfile.js",
+  "engines": {
+    "node": ">= 0.10.26",
+    "npm": ">=1.4.3"
+  },
+  "scripts": {
+    "test": "echo \"No tests\""
+  },
+  "dependencies": {
+    "slush": "^1.0.0",
+    "gulp": "^3.6.2",
+    "gulp-template": "^0.1.1",
+    "gulp-install": "^0.1.4",
+    "gulp-conflict": "^0.1.1",
+    "gulp-rename": "^1.2.0",
+    "underscore.string": "^2.3.3",
+    "inquirer": "^0.4.1",
+    "iniparser": "^1.0.5"
+  }
+}

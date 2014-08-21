@@ -1,0 +1,46 @@
+{
+  "name": "<%= app_name_slug %>",
+  "version": "<%= app_version %>",
+  "description": "<%= app_description %>",
+  "homepage": "https://github.com/<%= user_name %>/<%= app_name_slug %>",
+  "author": {
+    "name": "<%= authorName %>",
+    "email": "<%= authorEmail %>"
+  },
+  "keywords": [
+    "<%= app_name_slug %>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/<%= user_name %>/<%= app_name_slug %>.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<%= user_name %>/<%= app_name_slug %>/issues"
+  },
+  "license": {
+    "type": "<%= license %>",
+    "url": "https://github.com/<%= user_name %>/<%= app_name_slug %>/blob/master/LICENSE"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.10.26",
+    "npm": ">=1.4.3"
+  },
+  "scripts": {
+    "test": "gulp mocha"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "gulp": "^3.8.7",
+    "gulp-bump": "^0.1.11",
+    "gulp-coffee": "^2.1.1",
+    "gulp-coffeelint": "~0.3.3",
+    "gulp-load-plugins": "^0.5.3",
+    "gulp-mocha": "^1.0.0",
+    "gulp-util": "^3.0.0",
+    "sinon": "^1.10.3",
+    "yargs": "~1.3.1"
+  }
+}
