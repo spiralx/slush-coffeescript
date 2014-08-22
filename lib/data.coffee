@@ -1,0 +1,6 @@
+
+exports.licenses = [
+  "MIT"
+  "BSD"
+]
+

@@ -5,11 +5,14 @@ $ = require("gulp-load-plugins")()
 slugify = require("underscore.string").slugify
 inquirer = require "inquirer"
 
+prompts = require './lib/prompts'
+{ licenses } = require './lib/data'
+
 
 # ----------------------------------------------------------------------------
 
 gulp.task 'default', (done) ->
-  inquirer.prompt require("./prompts.coffee"), (answers) ->
+  inquirer.prompt prompts, (answers) ->
     return done() unless answers.__continue
 
     answers.app_name_slug = slugify answers.app_name
@@ -18,26 +21,32 @@ gulp.task 'default', (done) ->
     answers.year = d.getFullYear()
     answers.date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
+    otherLicenses = (l for l in licenses when l isnt answers.license).join '|'
+
     files = [
-      # __dirname + "/templates/**"
-      # "!" + __dirname + "/templates/node_modules/**"
-      # "!" + __dirname + "/templates/node_modules/"
-      # "!" + __dirname + "/templates/LICENSE_" + if answers.license is 'MIT' then 'BSD' else 'MIT'
-      "templates/**/(!LICENSE_)*.*"
-      "templates/LICENSE_#{answers.license}"
+      "templates/#{answers.source_dir}/**/*.*"
+      "templates/#{answers.test_dir}/**/*.*"
+      "templates/*.*"
+      "!templates/LICENSE_(#{otherLicenses})"
     ]
+
+    files.push "templates/#{answers.bin_dir}/**/*.*" if answers.cli
+
+    console.dir files.join '\n'
+
+    # g = (p) -> glob.sync p, { cwd: 'C:\\dev\\projects\\living-style-guide' }
 
     answersLookup = (key) ->
       answers[key] or key
 
-    gulp.src files
+    gulp.src files, { base: 'templates' }
       .pipe $.template answers
       .pipe $.rename (file) ->
-        file.basename = file.basename
+        file.basename = answersLookup file.basename
           .replace "LICENSE_#{answers.license}", 'LICENSE'
           .replace /\w*_dir/g, answersLookup
           .replace /^_/, '.'
-        file.dirname  = file.dirname.replace /\w*_dir/g, answersLookup
+        file.dirname  = answersLookup file.dirname
         return
       .pipe $.conflict './'
       .pipe gulp.dest './'

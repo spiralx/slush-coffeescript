@@ -75,9 +75,33 @@ module.exports = [
     default: "MIT"
   }
   {
+    type: 'confirm'
+    name: 'cli'
+    message: 'Add bin script for CLI?'
+    default: false
+  }
+  {
+    name: 'bin_dir'
+    message: 'Specify CLI directory?'
+    default: 'bin'
+    when: (ans) -> ans.cli
+  }
+  {
+    type: 'confirm'
+    name: 'compiled'
+    message: 'Compile Coffeescript to JS?'
+    default: false
+  }
+  {
     name: "source_dir"
     message: "Specify source directory?"
-    default: "src"
+    default: (ans) -> if ans.compiled then "src" else "lib"
+  }
+  {
+    name: "build_dir"
+    message: "Specify directory to build JS to?"
+    default: (ans) -> if ans.source_dir is "lib" then "build" else "lib"
+    when: (ans) -> ans.compiled
   }
   {
     name: "test_dir"
