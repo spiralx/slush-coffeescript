@@ -77,7 +77,7 @@ gulp.task 'default', (done) ->
         return
       .pipe $.conflict './'
       .pipe gulp.dest './'
-      # .pipe $.install()
+      .pipe $.install()
       .on 'end', done
 
     return

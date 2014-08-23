@@ -8,12 +8,13 @@ $ = require('gulp-load-plugins')(lazy: true)
 config =
   src: '<%= source_dir %>/**/*.coffee'
   test: '<%= test_dir %>/**/*.spec.coffee'
-  lib: 'lib'
+  build: '<%= lib_dir %>',
   coffee:
     bare: true
   mocha:
     reporter: 'spec'
-  istanbul: '<%= test_dir %>/coverage'
+  istanbul:
+    dir: '<%= test_dir %>/coverage'
 
 
 # -----------------------------------------------------------------------------
@@ -28,7 +29,7 @@ handleError = (err) ->
 # -----------------------------------------------------------------------------
 
 gulp.task 'clean', ->
-  gulp.src [ config.lib, '<%= test_dir %>/coverage' ], read: false
+  gulp.src [ config.build, config.istanbul.dir ], read: false
     .pipe $.clean()
 
 
@@ -37,7 +38,7 @@ gulp.task 'clean', ->
 
 gulp.task 'bump', ->
   gulp.src './package.json'
-    .pipe plugins.bump
+    .pipe $.bump
       type: args.type ? 'patch'
     .pipe gulp.dest './'
 
@@ -63,8 +64,9 @@ gulp.task 'cover', ['coffee'], (cb) ->
     .on 'finish', ->
       gulp.src config.test
         .pipe $.mocha()
-        .pipe $.istanbul.writeReports()
+        .pipe $.istanbul.writeReports config.istanbul
         .on 'end', cb
+  return
 
 
 # -----------------------------------------------------------------------------
@@ -72,7 +74,7 @@ gulp.task 'cover', ['coffee'], (cb) ->
 gulp.task 'coffee', ->
   gulp.src config.src
     .pipe $.coffee config.coffee
-    .pipe gulp.dest config.lib
+    .pipe gulp.dest config.build
 
 
 # -----------------------------------------------------------------------------
