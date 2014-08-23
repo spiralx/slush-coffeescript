@@ -1,0 +1,14 @@
+{
+  "app_name": "node-mylib",
+  "app_description": "My Coffeescript library",
+  "app_version": "0.1.0",
+  "author_name": "James Skinner",
+  "author_email": "spiralx@gmail.com",
+  "user_name": "spiralx",
+  "license": "MIT",
+  "cli": true,
+  "bin_dir": "bin",
+  "compiled": false,
+  "source_dir": "lib",
+  "test_dir": "test"
+}

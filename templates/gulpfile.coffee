@@ -8,7 +8,7 @@ $ = require('gulp-load-plugins')(lazy: true)
 config =
   src: '<%= source_dir %>/**/*.coffee'
   test: '<%= test_dir %>/**/*.spec.coffee'
-  build: '<%= lib_dir %>',
+  build: '<%= lib_dir %>'
   coffee:
     bare: true
   mocha:
