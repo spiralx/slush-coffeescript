@@ -2,11 +2,14 @@
 fs = require "fs"
 path = require "path"
 
+
+# ----------------------------------------------------------------------------
+
 __workingDirName = path.basename process.cwd()
 
 if process.platform is "win32"
   __homeDir = process.env.USERPROFILE
-  __userName = process.env.USERNAME or path.basename(__homeDir).toLowerCase()
+  __userName = process.env.USERNAME
 else
   __homeDir = process.env.HOME or process.env.HOMEPATH
   __userName = __homeDir and path.basename(__homeDir).toLowerCase()
@@ -22,18 +25,7 @@ user ?= {}
 user.name = user.name or __userName
 
 
-# getUser = (->
-#   user = undefined
-#   (key) ->
-#     return user[key]  if user
-#     config_file = __homeDir + "/.gitconfig"
-#     if require("fs").existsSync(config_file)
-#       user = require("iniparser").parseSync(config_file).user
-#     user = user or {}
-#     user.name = user.name or __userName
-#     user.email = user.email or `undefined`
-#     user[key]
-# )()
+# ----------------------------------------------------------------------------
 
 module.exports = [
   {
@@ -53,6 +45,7 @@ module.exports = [
   {
     name: "author_name"
     message: "What is the author name?"
+    default: user.name
   }
   {
     name: "author_email"
@@ -62,7 +55,7 @@ module.exports = [
   {
     name: "user_name"
     message: "What is the github username?"
-    default: user.name
+    default: __userName.toLowerCase()
   }
   {
     name: "license"
@@ -95,12 +88,19 @@ module.exports = [
   {
     name: "source_dir"
     message: "Specify source directory?"
-    default: (ans) -> if ans.compiled then "src" else "lib"
+    default: "lib"
+    when: (ans) -> !ans.compiled
+  }
+  {
+    name: "source_dir"
+    message: "Specify Coffeescript source directory?"
+    default: "src"
+    when: (ans) -> ans.compiled
   }
   {
     name: "build_dir"
-    message: "Specify directory to build JS to?"
-    default: (ans) -> if ans.source_dir is "lib" then "build" else "lib"
+    message: "Specify directory for compiled Javascipt library code?"
+    default: "lib"
     when: (ans) -> ans.compiled
   }
   {

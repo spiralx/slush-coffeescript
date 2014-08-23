@@ -4,8 +4,8 @@
   "description": "<%= app_description %>",
   "homepage": "https://github.com/<%= user_name %>/<%= app_name_slug %>",
   "author": {
-    "name": "<%= authorName %>",
-    "email": "<%= authorEmail %>"
+    "name": "<%= author_name %>",
+    "email": "<%= author_email %>"
   },
   "keywords": [
     "<%= app_name_slug %>"
@@ -30,17 +30,20 @@
     "test": "gulp mocha"
   },
   "dependencies": {
+    <% if (!compiled) { %>"coffee-script": "^1.7.1"<% } %>
   },
   "devDependencies": {
-    "chai": "~1.9.1",
+    "chai": "^1.9.1",
     "gulp": "^3.8.7",
     "gulp-bump": "^0.1.11",
+    "gulp-clean": "^0.3.1",
     "gulp-coffee": "^2.1.1",
-    "gulp-coffeelint": "~0.3.3",
+    "gulp-coffeelint": "^0.3.3",
+    "gulp-istanbul": "^0.2.2",
     "gulp-load-plugins": "^0.5.3",
     "gulp-mocha": "^1.0.0",
     "gulp-util": "^3.0.0",
     "sinon": "^1.10.3",
-    "yargs": "~1.3.1"
+    "yargs": "^1.3.1"
   }
 }

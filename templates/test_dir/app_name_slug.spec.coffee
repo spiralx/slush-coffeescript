@@ -23,7 +23,7 @@ describe '<%= app_name_slug %>.coffee', ->
 
     it 'should say return the correct name', (done) ->
       expect <%= app_name_slug %>.getAppName()
-        .to.be.instanceof String
+        .to.be.a 'string'
         .and.to.equal '<%= app_name %>'
       done()
 
