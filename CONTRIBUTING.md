@@ -1,4 +1,4 @@
-# Contributing to slush-coffeescript
+## Contributing to slush-coffeescript
 
 Please take a moment to review this document in order to make the contribution
 process easy and effective for everyone involved.
@@ -9,10 +9,10 @@ they should reciprocate that respect in addressing your issue or assessing
 patches and features.
 
 
-## Using the issue tracker
+### Using the issue tracker
 
 The issue tracker is the preferred channel for [bug reports](#bug-reports),
-[features requests](#feature-requests) and [submitting pull
+[feature requests](#feature-requests) and submitting [pull
 requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests (use
@@ -22,7 +22,7 @@ requests](#pull-requests), but please respect the following restrictions:
   respect the opinions of others.
 
 
-## Bug reports
+### Bug reports
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository.
 Good bug reports are extremely helpful - thank you!
@@ -63,7 +63,7 @@ Example:
 > merits).
 
 
-## Feature requests
+### Feature requests
 
 Feature requests are welcome. But take a moment to find out whether your idea
 fits with the scope and aims of the project. It's up to *you* to make a strong
@@ -71,7 +71,7 @@ case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
 
 
-## Pull requests
+### Pull requests
 
 Good pull requests - patches, improvements, new features - are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
@@ -93,11 +93,11 @@ project:
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/slush-slush-coffeescript
+   git clone https://github.com/<your-user-name>/slush-coffeescript
    # Navigate to the newly cloned directory
-   cd slush-slush-coffeescript
+   cd slush-coffeescript
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/spiralx/slush-slush-coffeescript
+   git remote add upstream https://github.com/spiralx/slush-coffeescript
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -135,7 +135,8 @@ project:
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description.
 
-## Conventions of commit messages
+
+### Conventions of commit messages
 
 Addding files on repo
 
