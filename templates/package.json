@@ -22,7 +22,10 @@
     "url": "https://github.com/<%= user_name %>/<%= app_name_slug %>/blob/master/LICENSE"
   },
   "main": "index.js",
-  "engines": {
+  <% if (bin) { %>"bin": {
+    "<%= app_name_slug %>": "./<%= bin_dir %>/<%= app_name_slug %>"
+  },
+  <% } %>"engines": {
     "node": ">= 0.10.26",
     "npm": ">=1.4.3"
   },
@@ -34,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
+    <% if (compiled) { %>"coffee-script": "^1.7.1",<% } %>
     "gulp": "^3.8.7",
     "gulp-bump": "^0.1.11",
     "gulp-clean": "^0.3.1",

@@ -69,8 +69,8 @@ module.exports = [
     default: 'MIT'
   }
   {
+    name: 'bin'
     type: 'confirm'
-    name: 'cli'
     message: 'Add bin script for CLI?'
     default: false
   }
@@ -78,7 +78,7 @@ module.exports = [
     name: 'bin_dir'
     message: 'Specify CLI directory?'
     default: 'bin'
-    when: (ans) -> ans.cli
+    when: (ans) -> ans.bin
   }
   {
     type: 'confirm'

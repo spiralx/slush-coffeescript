@@ -1,29 +1,31 @@
-# slush-coffeescript [![Build Status](https://secure.travis-ci.org/spiralx/slush-slush-coffeescript.png?branch=master)](https://travis-ci.org/spiralx/slush-slush-coffeescript) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-slush-coffeescript.png)](http://badges.enytc.com/for/npm/slush-slush-coffeescript)
+# slush-coffeescript [![Build Status](https://secure.travis-ci.org/spiralx/slush-coffeescript.png?branch=master)](https://travis-ci.org/spiralx/slush-coffeescript) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-coffeescript.png)](http://badges.enytc.com/for/npm/slush-coffeescript)
 
 > Generates a Node module written in Coffeescript
 
 
 ## Getting Started
 
-Install `slush-slush-coffeescript` globally:
+Install `slush-coffeescript` globally:
 
 ```bash
-$ npm install -g slush-slush-coffeescript
+$ npm install -g slush-coffeescript
 ```
+
 
 ### Usage
 
 Create a new folder for your project:
 
 ```bash
-$ mkdir my-slush-slush-coffeescript
+$ mkdir my-slush-coffeescript
 ```
 
 Run the generator from within the new folder:
 
 ```bash
-$ cd my-slush-slush-coffeescript && slush slush-coffeescript
+$ cd my-slush-coffeescript && slush slush-coffeescript
 ```
+
 
 ## Getting To Know Slush
 
@@ -33,14 +35,18 @@ Slush does not contain anything "out of the box", except the ability to locate i
 
 To find out more about Slush, check out the [documentation](https://github.com/klei/slush).
 
+
 ## Contributing
 
-See the [CONTRIBUTING Guidelines](https://github.com/spiralx/slush-slush-coffeescript/blob/master/CONTRIBUTING.md)
+See the [CONTRIBUTING Guidelines](https://github.com/spiralx/slush-coffeescript/blob/master/CONTRIBUTING.md)
+
 
 ## Support
-If you have any problem or suggestion please open an issue [here](https://github.com/spiralx/slush-slush-coffeescript/issues).
 
-## License 
+If you have any problem or suggestion please open an issue [here](https://github.com/spiralx/slush-coffeescript/issues).
+
+
+## License
 
 The MIT License
 

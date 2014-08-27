@@ -2,7 +2,7 @@
 expect = require('chai').expect
 sinon = require 'sinon'
 
-<%= app_name_slug %> = require '../<%= source_dir %>/<%= app_name_slug %>'
+<%= app_name_camel %> = require '../<%= source_dir %>/<%= app_name_slug %>'
 
 
 # -----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ describe '<%= app_name_slug %>.coffee', ->
   describe 'getAppName()', ->
 
     it 'should say return the correct name', (done) ->
-      expect <%= app_name_slug %>.getAppName()
+      expect <%= app_name_camel %>.getAppName()
         .to.be.a 'string'
         .and.to.equal '<%= app_name %>'
       done()
@@ -31,7 +31,7 @@ describe '<%= app_name_slug %>.coffee', ->
   describe 'hello()', ->
 
     it 'should say hello', (done) ->
-      <%= app_name_slug %>.hello()
+      <%= app_name_camel %>.hello()
 
       sinon.assert.calledOnce console.log
       sinon.assert.calledWithExactly console.log, 'Hello from <%= app_name %>!'
