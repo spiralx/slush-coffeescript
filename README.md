@@ -1,4 +1,6 @@
-# slush-coffeescript [![Build Status](https://secure.travis-ci.org/spiralx/slush-coffeescript.png?branch=master)](https://travis-ci.org/spiralx/slush-coffeescript) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-coffeescript.png)](http://badges.enytc.com/for/npm/slush-coffeescript)
+# slush-coffeescript
+
+[![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev. Dependency Status][daviddm-dev-image]][daviddm-dev-url]
 
 > Generates a Node module written in Coffeescript
 
@@ -73,3 +75,9 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
+[npm-url]: https://npmjs.org/package/slush-coffeescript
+[npm-image]: https://badge.fury.io/js/slush-coffeescript.svg
+[daviddm-url]: https://david-dm.org/<%= user_name %>/slush-coffeescript
+[daviddm-image]: https://david-dm.org/<%= user_name %>/slush-coffeescript.svg?theme=shields.io
+[daviddm-dev-url]: https://david-dm.org/<%= user_name %>/slush-coffeescript#info=devDependencies
+[daviddm-dev-image]: https://david-dm.org/<%= user_name %>/slush-coffeescript/dev-status.svg?theme=shields.io
