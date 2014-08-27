@@ -77,7 +77,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 [npm-url]: https://npmjs.org/package/slush-coffeescript
 [npm-image]: https://badge.fury.io/js/slush-coffeescript.svg
-[daviddm-url]: https://david-dm.org/<%= user_name %>/slush-coffeescript
-[daviddm-image]: https://david-dm.org/<%= user_name %>/slush-coffeescript.svg?theme=shields.io
-[daviddm-dev-url]: https://david-dm.org/<%= user_name %>/slush-coffeescript#info=devDependencies
-[daviddm-dev-image]: https://david-dm.org/<%= user_name %>/slush-coffeescript/dev-status.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/spiralx/slush-coffeescript
+[daviddm-image]: https://david-dm.org/spiralx/slush-coffeescript.svg?theme=shields.io
+[daviddm-dev-url]: https://david-dm.org/spiralx/slush-coffeescript#info=devDependencies
+[daviddm-dev-image]: https://david-dm.org/spiralx/slush-coffeescript/dev-status.svg?theme=shields.io
