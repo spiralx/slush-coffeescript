@@ -32,15 +32,36 @@ and answer the proceeding questions.
 
 * _Add bin script for CLI?_
 
-  Answering yes to this question generates an executable script (by default in the `bin` directory) to be run
-  from the command line, which calls a module `cli` to handle processing command-line arguments and running
-  the application.
+  Answering __yes__ to this question generates an executable script (by default in the `bin` directory) to be run from the command line, which calls a module `cli` to handle processing command-line arguments and running the application.
 
 * _Compile CoffeeScript to JS?_
 
   Answering __no__ (the default) to this means that the module will contain pure CoffeeScript source and extend Node's `require` function to recognise CoffeeScript modules and automatically compile them at run-time when requested (via the [coffee-script/register](http://coffeescript.org/documentation/docs/register.html) module).
 
-  To have a more traditional module with CoffeeScript source compiled to JavaScript answering _yes_ to this prompt lets you specify a build directory which the included `Gulpfile.js` will build to.
+  To have a more traditional module with CoffeeScript source compiled to JavaScript answering __yes__ to this prompt lets you specify a build directory which the included `Gulpfile.js` will build to.
+
+
+#### Automating module generation
+
+If required you can define all of the necessary configuration to run this generator without any user interaction by creating a file called `slushproject.json` in the directory from where you run the generator. This file has the following format:
+
+```js
+{
+  "app_name": "node-mylib",
+  "app_description": "My Coffeescript library",
+  "app_version": "0.1.0",
+  "author_name": "James Skinner",
+  "author_email": "spiralx@gmail.com",
+  "user_name": "spiralx",
+  "license": "MIT",
+  "bin": false,
+  "bin_dir": "bin",
+  "compiled": true,
+  "source_dir": "src",
+  "build_dir": "lib",
+  "test_dir": "test"
+}
+```
 
 
 ### Getting To Know Slush

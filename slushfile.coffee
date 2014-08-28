@@ -3,34 +3,14 @@
 gulp = require 'gulp'
 $ = require('gulp-load-plugins')(config: "#{__dirname}/package.json")
 
-us = require('underscore.string')
+us = require 'underscore.string'
 inquirer = require 'inquirer'
 
 path = require 'path'
 fs = require 'fs'
 
+utils = require './lib/utils'
 prompts = require './lib/prompts'
-
-
-# ----------------------------------------------------------------------------
-
-splitext = (fn) ->
-  ext = path.extname fn
-  [
-    path.basename fn, ext
-    ext
-  ]
-
-
-applyRenames = (fn, answers) ->
-  [name, ext] = splitext fn
-  name = answers[name] ? name
-  name + ext
-
-
-camelCase = (s) ->
-  s = us.camelize s
-  s[0].toLowerCase() + s.substr(1)
 
 
 # ----------------------------------------------------------------------------
@@ -40,18 +20,19 @@ loadProjectConfig = () ->
   configFile = path.join process.cwd(), './slushproject.json'
 
   if fs.existsSync configFile
-    require configFile
+    config = require configFile
+    utils.dict [p.name, config[p.name] ? p.default ? ''] for p in prompts
 
 
 # ----------------------------------------------------------------------------
 
 run = (answers, done) ->
   answers.app_name_slug = us.slugify answers.app_name
-  answers.app_name_camel = camelCase answers.app_name
+  answers.app_name_camel = utils.camelCase answers.app_name
 
   d = new Date()
   answers.year = d.getFullYear()
-  answers.date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
+  answers.date = d.toISOString().split('T')[0]
 
   tmpl_dir = "#{__dirname}/templates"
 
@@ -90,10 +71,10 @@ run = (answers, done) ->
   gulp.src files, { base: tmpl_dir }
     .pipe $.template answers
     .pipe $.rename (file) ->
-      file.basename = applyRenames file.basename, answers
+      file.basename = utils.applyRenames file.basename, answers
         .replace "LICENSE_#{answers.license}", 'LICENSE'
         .replace /^_/, '.'
-      file.dirname  = applyRenames file.dirname, answers
+      file.dirname  = utils.applyRenames file.dirname, answers
       return
     .pipe $.conflict './'
     .pipe gulp.dest './'
