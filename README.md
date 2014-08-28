@@ -32,15 +32,82 @@ and answer the proceeding questions.
 
 * _Add bin script for CLI?_
 
-  Answering yes to this question generates an executable script (by default in the `bin` directory) to be run
-  from the command line, which calls a module `cli` to handle processing command-line arguments and running
-  the application.
+  Answering __yes__ to this question generates an executable script (by default in the `bin` directory) to be run from the command line, which calls a module `cli` to handle processing command-line arguments and running the application.
 
 * _Compile CoffeeScript to JS?_
 
   Answering __no__ (the default) to this means that the module will contain pure CoffeeScript source and extend Node's `require` function to recognise CoffeeScript modules and automatically compile them at run-time when requested (via the [coffee-script/register](http://coffeescript.org/documentation/docs/register.html) module).
 
-  To have a more traditional module with CoffeeScript source compiled to JavaScript answering _yes_ to this prompt lets you specify a build directory which the included `Gulpfile.js` will build to.
+  To have a more traditional module with CoffeeScript source compiled to JavaScript answering __yes__ to this prompt lets you specify a build directory which the included `Gulpfile.js` will build to.
+
+
+#### Automating module generation
+
+Instead of answering the prompts to configure the generator you can specify the answers in a file called `slush-config.json` in the directory you run the generator from. If the generator finds this file in the current directory when it is run then it reads `slush-config.json` and overrides the default settings with any data it finds.
+
+The following examples show all of the settings the generator currently supports:
+
+
+###### `slush-config.json`
+
+Basic CoffeeScript module designed to be directly used as a library - compilation is done at run-time.
+
+```js
+{
+  "app_name": "my-node-lib",
+  "app_description": "My CoffeeScript library",
+  "app_version": "0.0.1",
+  "author_name": "James Skinner",
+  "author_email": "spiralx@gmail.com",
+  "user_name": "spiralx",
+  "license": "MIT",
+  "bin": false,
+  "compiled": false,
+  "source_dir": "lib",
+  "test_dir": "test"
+}
+```
+
+
+###### `slush-config-cli.json`
+
+A CoffeeScript module that can be run from the command-line and typically installed globally.
+
+```js
+{
+  "app_name": "my-node-command",
+  "app_description": "My CoffeeScript CLI module",
+  "bin": true
+}
+```
+
+
+###### `slush-config-compiled.json`
+
+A JavaScript module built from CoffeeScript source using the included `gulp` build script.
+
+```js
+{
+  "app_name": "my-compiled-node-lib",
+  "app_description": "My CoffeeScript module",
+  "compiled": true,
+  "source_dir": "coffee",
+  "build_dir": "lib",
+  "test_dir": "test"
+}
+```
+
+
+__slush-config-both.json__
+
+A module with a CLI script, written in CoffeeScript and compiled to JavaScript.
+
+```js
+{
+  "bin": true,
+  "compiled": true
+}
+```
 
 
 ### Getting To Know Slush
