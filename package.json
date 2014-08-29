@@ -1,19 +1,20 @@
 {
   "name": "slush-coffeescript",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "preferGlobal": true,
   "description": "Generates a Node.js module written in Coffeescript",
   "author": "James Skinner <spiralx@gmail.com> (https://github.com/spiralx)",
   "homepage": "https://github.com/spiralx/slush-coffeescript",
   "keywords": [
     "slushgenerator",
+    "slush-generator",
     "slush",
+    "generator",
     "coffeescript",
     "coffee-script",
     "project",
     "module",
     "scaffold",
-    "generator",
     "module"
   ],
   "repository": {
