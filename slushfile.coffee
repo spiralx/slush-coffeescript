@@ -4,12 +4,12 @@ gulp = require 'gulp'
 $ = require('gulp-load-plugins')(config: "#{__dirname}/package.json")
 
 us = require 'underscore.string'
-inquirer = require 'inquirer'
 
 path = require 'path'
 fs = require 'fs'
 
 utils = require './lib/utils'
+{ getTaskConfig } = require './lib/config'
 prompts = require './lib/prompts'
 
 
@@ -84,15 +84,10 @@ run = (answers, done) ->
   return
 
 
+# ----------------------------------------------------------------------------
+
 gulp.task 'default', (done) ->
-  config = loadProjectConfig()
-
-  if config
-    run config, done
-  else
-    inquirer.prompt prompts, (answers) ->
-      return done() unless answers.__continue
-
-      run answers, done
+  getTaskConfig (answers) ->
+    run answers, done
 
   return

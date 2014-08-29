@@ -46,7 +46,8 @@
     "iniparser": "^1.0.5",
     "inquirer": "^0.6.0",
     "slush": "^1.0.1",
-    "underscore.string": "^2.3.3"
+    "underscore.string": "^2.3.3",
+    "object-assign": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",

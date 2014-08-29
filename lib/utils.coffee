@@ -27,8 +27,9 @@ reduce = exports.reduce = (array, base, combine) ->
 
 # Similar to reduce(), but each element is used to update the target
 # object in turn, which is then returned.
-build = exports.build = (array, target, update) ->
-  [target, update] = [array.shift(), target] unless update?
+applyEach = exports.applyEach = (target, array, update) ->
+  return target unless array and update
+
   update target, cur for cur in array
   target
 
@@ -60,7 +61,9 @@ camelCase = exports.camelCase = (s) ->
 
 # ----------------------------------------------------------------------------
 
-dict = exports.dict = (items...) ->
+dict = exports.dict = (items) ->
+  return {} unless items
+
   reduce items, {}, (d, c) ->
     [k, v] = c
     d[k] = v

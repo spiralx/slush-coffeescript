@@ -95,48 +95,91 @@ describe 'lib/utils.coffee', ->
 
   # ---------------------------------------------------------------------------
 
-  describe 'build()', ->
-    conc = (a, b) -> a.concat b
-    items = [
+  describe 'applyEach()', ->
+    concat = (a, b) ->
+      a.splice a.length, 0, b...
+      return
+
+    items1 = [
+      [5, 9]
+      [1]
+    ]
+
+    items2 = [
       [5, 9]
       [1]
       [10..13]
       ['a', 'v']
     ]
-    target = []
+
+    target = [
+      'moo'
+    ]
 
     beforeEach (done) ->
       target = []
       done()
 
-    it 'should return the target value', (done) ->
-      expect utils.build [1..5], target, conc
-        .to.eql [1..5]
-        .and.to.equal target
+    it 'should return the target object', (done) ->
+      expect utils.applyEach target, [1..5], concat
+        .to.equal target
       done()
 
-    it 'should apply the update function to each item in turn', (done) ->
-      expect utils.build items, target, conc
-        .to.eql [ 5, 9, 1, 10, 11, 12, 13, 'a', 'v' ]
-        .and.to.equal target
+    it 'should do nothing to target with no parameters or an empty array', (done) ->
+      expect utils.applyEach target, [], concat
+        .to.equal target
+        .and.to.eql target
+      expect utils.applyEach target, concat
+        .to.equal target
+        .and.to.eql target
       done()
 
-    it 'should apply to the first item when no target is set', (done) ->
-      expect utils.build items, conc
-        .to.eql [ 5, 9, 1, 10, 11, 12, 13, 'a', 'v' ]
-        .and.to.equal items[0]
+    it 'should apply the update function to the target and each item in turn', (done) ->
+      expect utils.applyEach [], items1, concat
+        .and.to.eql [ 5, 9, 1 ]
+      expect utils.applyEach [], items2, concat
+        .and.to.eql [ 5, 9, 1, 10, 11, 12, 13, 'a', 'v' ]
       done()
+
 
 
   # ---------------------------------------------------------------------------
 
   describe 'dict()', ->
 
-    it 'should return a new object', (done) ->
+    itemArray = [
+      ['x', 6]
+      ['y', 2]
+      ['name', 'Ray-Ray']
+    ]
+
+    itemArray2 = [
+      ['x', 6]
+      ['y', 2]
+      ['name', 'Ray-Ray']
+      ['y', 2]
+    ]
+
+    itemObj =
+      x: 6
+      y: 2
+      name: 'Ray-Ray'
+
+    it 'should return a new object with no parameters or an empty array', (done) ->
       expect utils.dict()
         .to.be.an 'object'
         .and.to.eql {}
-      expect utils.dict ['x', 6], ['y', 2], ['name', 'Ray-Ray']
-        .to.eql x: 6, y: 2, name: 'Ray-Ray'
+      expect utils.dict []
+        .to.be.an 'object'
+        .and.to.eql {}
+      done()
+
+    it 'should return the correct object', (done) ->
+      expect utils.dict itemArray
+        .to.be.an 'object'
+        .to.eql itemObj
+      expect utils.dict itemArray2
+        .to.be.an 'object'
+        .to.eql itemObj
 
       done()

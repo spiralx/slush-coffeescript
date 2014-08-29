@@ -1,19 +1,40 @@
 'use strict'
 
+path = require 'path'
+fs = require 'fs'
+
+inquirer = require 'inquirer'
+assign = require 'object-assign'
+
+prompts = require './prompts'
+{ dict } = require './utils'
 
 
 # ----------------------------------------------------------------------------
 
-loadProjectConfig = () ->
+getDefaultAnswers = () ->
+   dict([p.name, p.default ? ''] for p in prompts)
+
+
+# ----------------------------------------------------------------------------
+
+loadConfigFile = () ->
   # configFile = path.join __dirname, 'slushproject.json'
-  configFile = path.join process.cwd(), './slushproject.json'
 
-  if fs.existsSync configFile
-    config = require configFile
-    utils.dict [p.name, config[p.name] ? p.default ? ''] for p in prompts
+  configFile = path.join process.cwd(), './slushproject.json'
+  return null unless fs.existsSync configFile
+
+  assign {}, getDefaultAnswers(), require configFile
 
 
 # ----------------------------------------------------------------------------
 
-getConfig = exports.getConfig = (questions, done) ->
+getTaskConfig = exports.getTaskConfig = (callback) ->
+  config = loadConfigFile()
 
+  return callback(config) if config
+
+  inquirer.prompt prompts, (answers) ->
+    return callback() unless answers.__continue
+
+    callback answers
