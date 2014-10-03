@@ -1,9 +1,9 @@
 gulp = require 'gulp'
-$ = require('gulp-load-plugins')(lazy: true)
+$ = require('gulp-load-plugins')()
 
 
 # -----------------------------------------------------------------------------
-# Location of source files and output destinations
+# Location of source files and output destinations and plugin config
 
 config =
   src: ['slushfile.coffee', 'lib/**/*.coffee']
@@ -41,6 +41,7 @@ gulp.task 'mocha', ['lint'], ->
 gulp.task 'test', ['mocha']
 
 gulp.task 'watch', ['mocha'], ->
+  $.util.log $.util.colors.magenta 'Watching...'
   gulp.watch [ config.src, config.test ], ['mocha']
 
 gulp.task 'default', ['watch']
