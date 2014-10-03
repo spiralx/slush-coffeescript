@@ -25,7 +25,7 @@ $ mkdir my-slush-coffeescript
 Run the generator from within the new folder:
 
 ```bash
-$ cd my-slush-coffeescript && slush CoffeeScript
+$ cd my-slush-coffeescript && slush coffeescript
 ```
 
 and answer the proceeding questions.
@@ -48,7 +48,7 @@ Instead of answering the prompts to configure the generator you can specify the 
 The following examples show all of the settings the generator currently supports:
 
 
-###### `slush-config.json`
+__slush-config.json__
 
 Basic CoffeeScript module designed to be directly used as a library - compilation is done at run-time.
 
@@ -69,7 +69,7 @@ Basic CoffeeScript module designed to be directly used as a library - compilatio
 ```
 
 
-###### `slush-config-cli.json`
+__slush-config-cli.json__
 
 A CoffeeScript module that can be run from the command-line and typically installed globally.
 
@@ -82,7 +82,7 @@ A CoffeeScript module that can be run from the command-line and typically instal
 ```
 
 
-###### `slush-config-compiled.json`
+__slush-config-compiled.json__
 
 A JavaScript module built from CoffeeScript source using the included `gulp` build script.
 
