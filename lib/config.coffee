@@ -13,7 +13,7 @@ prompts = require './prompts'
 # ----------------------------------------------------------------------------
 
 getDefaultAnswers = () ->
-   dict([p.name, p.default ? ''] for p in prompts)
+  dict([p.name, p.default ? ''] for p in prompts)
 
 
 # ----------------------------------------------------------------------------

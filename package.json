@@ -38,23 +38,23 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "coffee-script": "^1.8.0",
-    "gulp": "^3.8.7",
-    "gulp-conflict": "^0.2.0",
+    "coffee-script": "^1.9.1",
+    "gulp": "^3.8.11",
+    "gulp-conflict": "^0.3.0",
     "gulp-install": "^0.2.0",
-    "gulp-load-plugins": "^0.7.0",
+    "gulp-load-plugins": "^0.8.0",
     "gulp-rename": "^1.2.0",
-    "gulp-template": "^1.0.0",
+    "gulp-template": "^3.0.0",
     "iniparser": "^1.0.5",
     "inquirer": "^0.8.0",
-    "slush": "^1.0.1",
-    "underscore.string": "^2.3.3",
-    "object-assign": "^1.0.0"
+    "object-assign": "^2.0.0",
+    "slush": "^1.1.1",
+    "underscore.string": "^3.0.3"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "gulp-coffeelint": "^0.3.4",
-    "gulp-mocha": "^1.0.0",
-    "gulp-util": "^3.0.0"
+    "chai": "^2.1.0",
+    "gulp-coffeelint": "^0.4.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-util": "^3.0.4"
   }
 }
